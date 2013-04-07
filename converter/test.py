@@ -1,4 +1,4 @@
-from .app import convert, convertFile
+from .app import convert
 
 # test the convert function
 def test_convert():
@@ -12,5 +12,8 @@ def test_no_conversion_needed():
 def test_convert_with_noise():
     """test only needs to convert one word in a sentance of three words"""
     assert convert('my folder letsChange') == 'my folder lets_change'
+
+def test_false_positive():
+    assert convert('my=myFolder myFolder=myFarmer') == 'my=my_folder my_folder=my_farmer'
 
 

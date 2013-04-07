@@ -4,8 +4,10 @@ def convert(word):
     """Take a CamelCased word and return it as un_camel_cased
         e.g. convert(myWord) returns my_word
     """
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', word)
+    # this fails for db.Model
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', word) # this is counting my=myFolder?
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
 
 
 def convert_file(filename):
