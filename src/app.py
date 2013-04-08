@@ -19,7 +19,7 @@ def convert_with_rules(word):
     """The given word may represent an object with namespace/property declarations. These should be split a way
     to return only the alphabetical word.
 
-    e.g. db.Model should be split to db and Model; neither of which should need conversion
+    Certain words, like db.Model shouldn't be split. This will pose a problem. For now, I'm punting on this.
     """
     symbols = ['=', '+', '-', ',']
     
