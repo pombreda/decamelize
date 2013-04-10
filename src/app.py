@@ -4,7 +4,8 @@ def convert(word):
     """Take a CamelCased word and return it as un_camel_cased
     e.g. convert(myWord) returns my_word
     """
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', word) # this is counting my=myFolder?
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', word) 
+        # this is counting  my=myFolder?
     s2 = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1)
     if '_' in s2:
         return s2.lower()
@@ -12,18 +13,25 @@ def convert(word):
 
 # some sort of matching system should be setup, such that you can find
 # it should be a rules based approach that breaks down a word.
-# if the word is something like "db.model" then it should be split on the period to be ["db", ".", "model"]
+# if the word is something like "db.model" then it should be split on the 
+# period to be ["db", ".", "model"]
 # the words should be split so that only WORDs are handled not spaces
 
 def convert_with_rules(word):
-    """The given word may represent an object with namespace/property declarations. These should be split a way
-    to return only the alphabetical word.
+    """ Words containing a certain symbol need to handled in different ways.
+        Convert_with_rules does by using a set of predefined rules dictate
+        how a word will be handled.
 
-    Certain words, like db.Model shouldn't be split. This will pose a problem. For now, I'm punting on this.
+        >>> convert_with_rules('db.model')
+        'db.model'
+        >>> convert_with_rules('myTest=myJudge')
+        'my_test=my_judge'
     """
+
     symbols = ['=', '+', '-', ',']
     
-    if '.' in word:
+    # these could be namespaces. Leave them alone. 
+    if '.' in word: 
         return word
 
     for symbol in symbols:
@@ -47,7 +55,8 @@ def split_file(file_handle):
     return file_handle.split('\n')
 
 #def convert_file(file_handle):
-#    """Given an open file handle, create a new converted file and save it with the extension .converted
+#    """Given an open file handle, create a new converted file and save it 
+#   with the extension .converted
 #    appended to the filename.
 #    """
 #    # could just replace the old file. 
