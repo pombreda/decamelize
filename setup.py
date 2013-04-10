@@ -12,7 +12,7 @@ setup(
         version='0.1',
         author='Chris Wolfe'
         author_email='cw@none.com' # fill in later
-        description='Convert a camel cased project to one using underscores and caps to make it semi PEP-8 compliant'
+        description="Replace camel casing with underscores"
         long_description=open('README.md').read()
         install_requires=requires
 )
